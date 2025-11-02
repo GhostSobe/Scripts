@@ -1,4 +1,19 @@
+Services = setmetatable({}, {
+    __index = function(self, name)
+        local success, cache = pcall(function()
+            return cloneref(game:GetService(name))
+        end)
+        if success then
+            rawset(self, name, cache)
+            return cache
+        else
+            error("Invalid Roblox Service: " .. tostring(name))
+        end
+    end
+})
+
 Lighting = cloneref(game:GetService("Lighting"))
+RunService = Services.RunService
 
 local Terrain = workspace:FindFirstChildOfClass("Terrain")
 Terrain.WaterWaveSize = 0
