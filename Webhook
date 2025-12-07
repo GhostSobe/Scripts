@@ -6,7 +6,7 @@ local newdata = game:GetService("HttpService"):JSONEncode(data)
 
 local headers = {["content-type"] = "application/json"}
 request = http_request or request or HttpPost
-local Hee = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(Hee)
+local Webhook = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(Webhook)
 
 -- DateTime.now():ToIsoDate()
